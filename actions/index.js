@@ -1,9 +1,5 @@
 import { submitDecks } from '../utils/api';
-
-export const RECEIVE_DECKS = 'RECEIVE_DECKS';
-export const ADD_DECK = 'ADD_DECK';
-export const ADD_CARD = 'ADD_CARD';
-export const ADD_RESULT = 'ADD_RESULT';
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD, ADD_RESULT } from '../actionTypes';
 
 export const receiveDecks = decks => ({ type: RECEIVE_DECKS, decks })
 export const addDeck = deck => ({ type: ADD_DECK, deck })

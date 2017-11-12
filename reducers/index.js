@@ -1,5 +1,4 @@
- import { RECEIVE_DECKS, ADD_DECK, ADD_CARD, ADD_RESULT} from '../actions'
-
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD, ADD_RESULT } from '../actionTypes';
 
 const decks = (state = [], action) => {
   const {deckKey, deck, card, result, percentage} = action;
