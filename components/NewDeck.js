@@ -19,8 +19,8 @@ class NewDeck extends React.Component {
     const { title } = this.state;
     if(!title) return;
 
-    this.props.submit({ title })
-    this.props.goBack();
+    const newCrdKey = this.props.submit({ title })
+    this.props.navigation.navigate('Deck', { deckKey: newCrdKey })
   }
 
   render() {
@@ -48,8 +48,7 @@ class NewDeck extends React.Component {
 const mapStateToProps = (decks) => ({})
 
 const mapDispatchToProps = (dispatch, { navigation }) => ({
-  submit: (deck) => dispatch(createDeck(deck)),
-  goBack: () => navigation.goBack(),
+  submit: (deck) => dispatch(createDeck(deck))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)

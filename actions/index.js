@@ -13,7 +13,9 @@ export const addResult = (deckKey, result) => ({ type: ADD_RESULT, deckKey, resu
 export const createDeck = (deck) =>
   (dispatch, getState) => {
     dispatch(addDeck(deck));
-    submitDecks(getState());
+    const decks = getState();
+    submitDecks(decks);
+    return decks.length - 1;
   }
 
 export const createCard = (deckKey, card) =>
