@@ -5,6 +5,7 @@ import styles from '../styles';
 import { saveResult } from '../actions';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { clearLocalNotification } from '../utils/notification';
+import FlipCard from 'react-native-flip-card';
 
 class QuizStep extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -13,7 +14,7 @@ class QuizStep extends React.Component {
   }
 
   state = {
-    isCardFront: true
+    flip: false
   }
 
   goToNextCard = (isCorrect) => {
@@ -31,29 +32,36 @@ class QuizStep extends React.Component {
     }
   }
 
+  onFlipCard = () => this.setState({flip: !this.state.flip})
+
   render() {
     const { currentlyCard, nextCard, navigation } = this.props;
-    const { isCardFront } = this.state;
+    const { flip } = this.state;
     const { answer, question } = currentlyCard;
 
     return (
       <ScrollView style={styles.container}>
         <View style={styles.form}>
-          <View style={styles.cardBody}>
-            {
-              isCardFront ?
-              <Text style={styles.title}>{answer}</Text> :
-              <Text style={styles.title}>{question}</Text>
-            }
-          </View>
+          <FlipCard
+            style={styles.card}
+            friction={6}
+            perspective={1000}
+            flipHorizontal={true}
+            flipVertical={false}
+            flip={flip}
+            clickable={false}
+          >
+            <View style={styles.cardBody}><Text style={styles.title}>{answer}</Text></View>
+            <View style={styles.cardBody}><Text style={styles.title}>{question}</Text></View>
+          </FlipCard>
 
           <TouchableOpacity
             style={{flexDirection: 'row', justifyContent: 'center', marginTop: 20, marginBottom: 50 }}
-            onPress={() => this.setState({isCardFront: !isCardFront})}
+            onPress={this.onFlipCard}
           >
-            <Text style={styles.submitBtnTextBlack}>Flip the card to {isCardFront ?'back' : 'front'}</Text>
+            <Text style={styles.submitBtnTextBlack}>Flip the card to {flip ? 'front' : 'back'}</Text>
             <MaterialCommunityIcons
-              name={ isCardFront ?'flip-to-back' : 'flip-to-front' }
+              name={ flip ? 'flip-to-front' : 'flip-to-back' }
               style={styles.submitBtnTextBlack}
             />
           </TouchableOpacity>

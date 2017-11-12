@@ -158,11 +158,7 @@ export default StyleSheet.create({
   },
   cardBody: {
     minHeight: 200,
-    padding: 5,
     marginTop: 0,
-    margin: 20,
-    borderWidth: 1,
-    borderColor: 'gray',
     justifyContent: 'center'
   },
 });
