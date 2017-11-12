@@ -10,10 +10,6 @@ class Deck extends React.Component {
     { title: navigation.state.params.title }
   )
 
-  state = {
-    ready: false,
-  }
-
   render() {
     const { navigation, decks } = this.props
     const { deckKey } = navigation.state.params;

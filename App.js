@@ -12,6 +12,7 @@ import DeckListView from './components/DeckListView';
 import NewDeck from './components/NewDeck';
 import NewCard from './components/NewCard';
 import QuizStep from './components/QuizStep';
+import QuizResult from './components/QuizResult';
 
 export default class App extends React.Component {
   render() {
@@ -61,6 +62,15 @@ const MainNavigator = StackNavigator({
   },
   QuizStep: {
     screen: QuizStep,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: green,
+      }
+    }
+  },
+  QuizResult: {
+    screen: QuizResult,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {

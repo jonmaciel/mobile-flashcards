@@ -10,10 +10,6 @@ class Deck extends React.Component {
     { title:'Quiz Result' }
   )
 
-  state = {
-    ready: false,
-  }
-
   render() {
     const { navigation, decks } = this.props
     const { deckKey } = navigation.state.params;
@@ -29,7 +25,7 @@ class Deck extends React.Component {
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
             onPress={() => navigation.navigate('Deck', { deckKey: deckKey })}
           >
-            <Text style={styles.submitBtnText}>New Card</Text>
+            <Text style={styles.submitBtnText}>Back to Deck</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtnWhite : styles.AndroidSubmitBtnWhite}
