@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Platfo
 import styles from '../styles';
 import { saveResult } from '../actions';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { clearLocalNotification } from '../utils/notification';
 
 class QuizStep extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -23,6 +24,7 @@ class QuizStep extends React.Component {
 
     this.props.saveResult(deckKey, newResult);
     if(nextCardKey >=  cardLength) {
+      clearLocalNotification();
       navigation.navigate('QuizResult', { deckKey, title: this.props.deck.title});
     } else {
       navigation.navigate('QuizStep', { deckKey: deckKey, cardKey: cardKey + 1, result: newResult, cardLength });
