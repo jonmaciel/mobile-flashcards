@@ -23,7 +23,7 @@ class QuizStep extends React.Component {
 
     this.props.saveResult(deckKey, newResult);
     if(nextCardKey >=  cardLength) {
-      navigation.navigate('QuizResult', { deckKey: deckKey, title: this.props.deck.title});
+      navigation.navigate('QuizResult', { deckKey, title: this.props.deck.title});
     } else {
       navigation.navigate('QuizStep', { deckKey: deckKey, cardKey: cardKey + 1, result: newResult, cardLength });
     }
