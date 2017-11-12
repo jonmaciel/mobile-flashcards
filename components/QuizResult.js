@@ -13,7 +13,7 @@ class Deck extends React.Component {
   render() {
     const { navigation, decks } = this.props
     const { deckKey } = navigation.state.params;
-    const { title, cards, lastResult, alreadyPlayed, lastPercentage } = decks[deckKey];
+    const { title, cards, lastPercentage } = decks[deckKey];
     const cardLength = cards.length;
 
     return (
@@ -23,13 +23,13 @@ class Deck extends React.Component {
           <Text style={styles.subtitle}>{lastPercentage}%</Text>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-            onPress={() => navigation.navigate('Deck', { deckKey: deckKey })}
+            onPress={() => navigation.navigate('Deck', { deckKey })}
           >
             <Text style={styles.submitBtnText}>Back to Deck</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtnWhite : styles.AndroidSubmitBtnWhite}
-            onPress={() => navigation.navigate('QuizStep', { deckKey: deckKey, cardKey: 0, result: 0, cardLength })}
+            onPress={() => navigation.navigate('QuizStep', { deckKey, cardKey: 0, result: 0, cardLength })}
           >
             <Text style={styles.submitBtnTextBlack}>
               Restart Quiz

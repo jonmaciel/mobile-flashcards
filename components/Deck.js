@@ -7,13 +7,13 @@ import styles from '../styles';
 
 class Deck extends React.Component {
   static navigationOptions = ({ navigation }) => (
-    { title: navigation.state.params.title }
+    { title: 'Deck' }
   )
 
   render() {
     const { navigation, decks } = this.props
     const { deckKey } = navigation.state.params;
-    const { title, cards, lastResult, alreadyPlayed, lastPercentage } = decks[deckKey];
+    const { title, cards, alreadyPlayed, lastPercentage } = decks[deckKey];
     const cardLength = cards.length;
 
     return (
@@ -26,7 +26,7 @@ class Deck extends React.Component {
           {alreadyPlayed && <Text style={styles.subtitle}>Last quiz percentage of correct: {lastPercentage}%</Text>}
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.AndroidSubmitBtn}
-            onPress={() => navigation.navigate('NewCard', { deckKey: deckKey })}
+            onPress={() => navigation.navigate('NewCard', { deckKey })}
           >
             <Text style={styles.submitBtnText}>New Card</Text>
           </TouchableOpacity>

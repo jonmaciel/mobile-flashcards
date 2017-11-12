@@ -38,10 +38,10 @@ class DeckListView extends React.Component {
       <View style={styles.container}>
         { decks.length ?
           <ScrollView style={styles.scrollView}>
-            {decks.map(({title, cards}, key) =>
+            {decks.map(({title, cards}, deckKey) =>
               <TouchableOpacity
-                key={key}
-                onPress={() => this.props.navigation.navigate('Deck', { deckKey: key, title })}
+                key={deckKey}
+                onPress={() => this.props.navigation.navigate('Deck', { deckKey, title })}
                 style={styles.itemScrollView}
               >
                 <Text style={styles.textItemScrollView}>{`${title} - ${cards.length} cards`}</Text>
